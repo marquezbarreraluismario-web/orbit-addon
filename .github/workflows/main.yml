@@ -1,0 +1,27 @@
+name: Compilar Addon Sin JDK
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 21 en la nube
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Dar permisos al compilador
+        run: chmod +x gradlew
+
+      - name: Compilar archivo JAR
+        run: ./gradlew build
+
+      - name: Guardar Mod Terminado
+        uses: actions/upload-artifact@v4
+        with:
+          name: MiAddonOrbit
+          path: build/libs/*.jar
