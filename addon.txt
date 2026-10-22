@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "orbit-addon",
+  "version": "1.0.0",
+  "name": "Orbit Addon",
+  "description": "Addon personalizado para Meteor Client.",
+  "authors": ["Sofixxz"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "meteor": [
+      "com.example.addon.AddonMain"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.21",
+    "meteor-client": "*"
+  }
+}
