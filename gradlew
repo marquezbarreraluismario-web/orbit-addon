@@ -1,3 +1,10 @@
 #!/usr/bin/env sh
-# Arranque automatico para Gradle en Linux/GitHub Actions
-exec "./gradlew" "$@"
+# Arranque estándar simplificado para GitHub Actions
+DIR=$(dirname "$0")
+JAR="$DIR/gradle/wrapper/gradle-wrapper.jar"
+if [ -r "$JAR" ]; then
+    java -jar "$JAR" "$@"
+else
+    echo "Error: No se encuentra gradle-wrapper.jar"
+    exit 1
+fi
